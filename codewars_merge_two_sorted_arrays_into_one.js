@@ -19,6 +19,18 @@ arr6 = [1, 2, 3, 4, 5, 10, 12];
 mergeArrays(arr5, arr6);  // [1, 2, 3, 4, 5, 7, 9, 10, 11, 12]
 */
 
-function mergeArrays(arr1, arr2) {
-  
+const mergeArrays = (arr1, arr2) => {
+  let merged = arr1.concat(arr2);
+  let array = [];
+  merged.sort(function(a, b) {
+    return a - b;
+  });
+  for(let i = 0; i < merged.length; i++) {
+    if(i === 0) {
+      array.push(merged[i]);
+    } else if(merged[i] !== merged[i-1]) {
+      array.push(merged[i]);
+    }
+  }
+  return array;
 }
